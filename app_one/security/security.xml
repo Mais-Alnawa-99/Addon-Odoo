@@ -1,0 +1,16 @@
+<odoo>
+    <record id="category_app" model="ir.module.category">
+        <field name="name">Project Dream</field>
+
+    </record>
+    <record id="security_app" model="res.groups">
+        <field name="name">access manager</field>
+        <field name="category_id" ref="app_one.category_app"/>
+    </record>
+    <record id="user_app" model="res.groups">
+         <field name="name">access user</field>
+         <field name="category_id" ref="app_one.category_app"/>
+    </record>
+
+
+</odoo>

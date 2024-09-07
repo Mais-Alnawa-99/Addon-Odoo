@@ -1,0 +1,137 @@
+<odoo>
+    <record id="property_view_tree" model="ir.ui.view">
+        <field name="name">property tree</field>
+        <field name="model">property</field>
+        <field name="arch" type="xml">
+            <tree class="property_header" decoration-danger="(is_late)">
+                <field name="name"/>
+                <field name="is_late" invisible="1"/>
+                <field name="date_availability"/>
+                <field name="selling_price"/>
+                <field name="garden"/>
+                <field name="living_area"/>
+                <field name="postcode"/>
+                <field name="phone_number"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+    <record id="property_view_form" model="ir.ui.view">
+        <field name="name">property form</field>
+        <field name="model">property</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <header>
+                        <button name="action_draft" type="object" class="btn-primary" string="set to draft"/>
+                        <button name="action_progress" type="object" class="btn-secondary" string="set to progress"/>
+                        <button name="action_close" type="object" class="btn-success" string="set to close"/>
+                        <button name="show_all_rec" type="object" class="btn-success" string="show rec"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <group>
+                        <group string ="field_1">
+                            <field name="ref"/>
+                            <field name="name"/>
+                            <field name="postcode" readonly="state == 'close'"/>
+                            <field name="phone_number"/>
+                            <field name="address_id" context="{'show_address':1}" options="{'always_reload':True}"/>
+                            <field name="part_id" domin="[('phone','=',True)]"/>
+                            <field name="expected_price"/>
+                             <field name="expected_price_date"/>
+                             <field name="active"/>
+                        </group>
+                        <group string ="field_2">
+                            <field name="selling_price"/>
+                            <field name="is_late"/>
+                            <field name="garden"/>
+                            <field name="living_area"/>
+                            <field name="garden_orientation"/>
+                            <field name="city"/>
+
+
+                        </group>
+                        <group>
+                            <field name="date_availability"/>
+                            <field name="price"/>
+                            <field name="description"/>
+                            <field name="reason"/>
+
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Bedrooms">
+                            <field name="line">
+                                <tree editable="bottom">
+                                    <field name="description"/>
+                                    <field name="area"/>
+                                </tree>
+                            </field>
+
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="property_view_search" model="ir.ui.view">
+        <field name="name">property  search</field>
+        <field name="model">property</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" context="{'active_test':False}"/>
+                <field name="postcode"/>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="property_action" model="ir.actions.act_window" >
+         <field name="name" >property action</field>
+         <field name="res_model" >property</field>
+         <field name="context" >{'default_name':'property'}</field>
+
+    </record>
+    <record id="check_selling_cron" model="ir.cron">
+        <field name="name">Property: check selling</field>
+        <field name="model_id" ref="model_property"/>
+        <field name="state">code</field>
+        <field name="code">model.expected_selling_date()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="active">True</field>
+
+
+    </record>
+    <record id="change_wizard" model="ir.actions.server">
+        <field name="name"> change with wizard</field>
+        <field name="model_id" ref="model_property"/>
+        <field name="binding_model_id" ref="model_property"/>
+        <field name="state">code</field>
+        <field name="code">
+            action=records.action_wizard()
+        </field>
+
+    </record>
+
+
+
+
+    <menuitem
+      id="properties_menu_view"
+      name="property_prop"
+      parent="properties_menu"
+      action="property_action"
+    />
+
+</odoo>
+
+
+
+

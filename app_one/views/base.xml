@@ -1,0 +1,12 @@
+<odoo>
+        <menuitem
+           id="property_menu"
+           name="Property"
+        />
+
+      <menuitem
+           id="properties_menu"
+           name="Properties"
+           parent="property_menu"
+        />
+</odoo>

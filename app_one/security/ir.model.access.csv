@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_property,access_property,model_property,,1,1,1,1
+access_property.line,access_property.line,model_property_line,,1,1,1,1
+access_change_wizard,access_change_wizard,model_change_wizard,,1,1,1,1
+access_history,access_history,model_history,,1,1,1,1

@@ -1,0 +1,36 @@
+<odoo>
+    <record id="property_report" model="ir.actions.report">
+        <field name="name">property Report</field>
+        <field name="model">property</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="binding_model_id" ref="model_property"/>
+        <field name="binding_type">report</field>
+        <field name="report_name">app_one.property_report_template</field>
+
+    </record>
+
+    <template id="property_report_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+            <t t-foreach="docs" t-as="record">
+                <h1 style="font-family: 'AguafinaScript';">property Report</h1>
+                <table>
+                    <thead>
+                        <th colspan="4"> GENERAL INFORMATION </th>
+                    </thead>
+                    <tbody>
+                        <td>Name</td>
+                        <td><t t-esc="record.name"/></td>
+                        <td>Post code</td>
+                        <td><t t-esc="record.postcode"/></td>
+                    </tbody>
+                </table>
+
+
+            </t>
+        </t>
+        </t>
+
+
+    </template>
+</odoo>
