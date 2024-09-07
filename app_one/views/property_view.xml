@@ -12,7 +12,7 @@
                 <field name="living_area"/>
                 <field name="postcode"/>
                 <field name="phone_number"/>
-                <field name="active"/>
+
             </tree>
         </field>
     </record>
@@ -20,7 +20,7 @@
         <field name="name">property form</field>
         <field name="model">property</field>
         <field name="arch" type="xml">
-            <form>
+            <form csrf="True">
                 <sheet>
                     <header>
                         <button name="action_draft" type="object" class="btn-primary" string="set to draft"/>

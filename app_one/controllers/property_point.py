@@ -1,3 +1,4 @@
+from logging import warning
 from urllib.parse import parse_qs
 
 from odoo import http
@@ -6,16 +7,18 @@ import json
 
 
 class ApiPoint(http.Controller):
-    @http.route("/property", methods=["POST"], type="json", auth="none", csrf=False)
+    @http.route("/property", methods=["POST"], type="json", auth="none", csrf=True)
     def create_property(self):
         args = request.httprequest.data.decode()
         vals = json.loads(args)
         try:
-            res = request.env['property'].sudo().create(vals)
-            if res:
-                return {
-                    'message': "the record create"
-                }
+           csrf_token = request.session.get_csrf_token()
+           if csrf_token and request.csrf_token == csrf_token:
+             res = request.env['property'].sudo().create(vals)
+             return res
+           else:
+            raise warning('you can not create rec')
+
 
         except Exception as error:
             return {

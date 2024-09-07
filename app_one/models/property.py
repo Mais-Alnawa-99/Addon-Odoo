@@ -1,5 +1,7 @@
 import re
+from logging import warning
 
+from odoo.http import request
 import requests
 from odoo import models, fields, api
 
@@ -130,10 +132,18 @@ class Property(models.Model):
             res.ref = self.env['ir.sequence'].next_by_code('property_seq')
         return res
 
+    def create_csrf(self, vals):
+        csrf_token = request.session.get_csrf_token()
+        if csrf_token and request.csrf_token == csrf_token:
+         res = super(Property, self).create(vals)
+         return res
+        else:
+            raise warning('you can not create rec')
+
     def group(self):
-        res = super(Property, self).read_group(domain=[],fields=[],groupby=[])
-        print('we copy this rec')
+        res = super(Property, self).read_group(domain=[('garden_orientation','!=','south')],fields=['city'],groupby=['city'])
         return res
+
 
 
 
