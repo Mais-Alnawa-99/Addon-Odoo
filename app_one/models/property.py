@@ -132,21 +132,29 @@ class Property(models.Model):
             res.ref = self.env['ir.sequence'].next_by_code('property_seq')
         return res
 
-    def create_csrf(self, vals):
-        csrf_token = request.session.get_csrf_token()
-        if csrf_token and request.csrf_token == csrf_token:
-         res = super(Property, self).create(vals)
-         return res
-        else:
-            raise warning('you can not create rec')
+
 
     def group(self):
-        res = super(Property, self).read_group(domain=[('garden_orientation','!=','south')],fields=['city'],groupby=['city'])
+        res = super(Property, self).read_group(domain=[('garden_orientation', '!=', 'south')], fields=['city'],
+                                               groupby=['city'])
         return res
 
+    @api.model
+    def write(self, vals):
+        res = super(Property, self).write(vals)
+        return res
 
+    def create_record(self, vals):
+        res = super(Property, self).create(vals)
+        return res
 
+    def un_link(self):
+        res = super(Property, self).un_link()
+        return res
 
+    def search_record(self):
+        res = super(Property, self).search([])
+        return res
 class PropertyLine(models.Model):
     _name = 'property.line'
     area = fields.Float()

@@ -20,7 +20,7 @@
         <field name="name">property form</field>
         <field name="model">property</field>
         <field name="arch" type="xml">
-            <form csrf="True">
+            <form>
                 <sheet>
                     <header>
                         <button name="action_draft" type="object" class="btn-primary" string="set to draft"/>
