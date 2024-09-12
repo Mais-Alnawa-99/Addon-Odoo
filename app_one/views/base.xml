@@ -9,4 +9,9 @@
            name="Properties"
            parent="property_menu"
         />
+     <menuitem
+           id="info_menu"
+           name="Info_Sale"
+           parent="property_menu"
+        />
 </odoo>

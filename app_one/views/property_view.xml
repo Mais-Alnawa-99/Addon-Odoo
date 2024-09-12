@@ -11,6 +11,7 @@
                 <field name="garden"/>
                 <field name="living_area"/>
                 <field name="postcode"/>
+                <field name="owner_id"/>
                 <field name="phone_number"/>
 
             </tree>
@@ -89,8 +90,30 @@
             </search>
         </field>
     </record>
-
-
+    <record id="property_kanban_view" model="ir.ui.view">
+        <field name="name">property kanban</field>
+        <field name="model">property</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="date_availability"/>
+                <field name="garden"/>
+                <field name="postcode"/>
+                <field name="phone_number"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div clas="oe_kanban_card">
+                            <span t-ecs="record.name.raw_value"/>
+                            <span t-ecs="record.date_availability.raw_value"/>
+                            <span t-ecs="record.garden.raw_value"/>
+                            <span t-ecs="record.postcode.raw_value"/>
+                            <span t-ecs="record.phone_number.raw_value"/>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
     <record id="property_action" model="ir.actions.act_window" >
          <field name="name" >property action</field>
          <field name="res_model" >property</field>
@@ -119,17 +142,12 @@
         </field>
 
     </record>
-
-
-
-
     <menuitem
       id="properties_menu_view"
       name="property_prop"
       parent="properties_menu"
       action="property_action"
     />
-
 </odoo>
 
 

@@ -11,18 +11,16 @@ class ApiPoint(http.Controller):
     def create_property(self):
         args = request.httprequest.data.decode()
         vals = json.loads(args)
-        try:     
-               res = request.env['property'].sudo().create(vals)
-               return {
-                   'message': "we  create the record",
-               }
-
-          
+        try:
+            res = request.env['property'].sudo().create(vals)
+            return {
+                'message': "we  create the record",
+            }
 
         except Exception as error:
-            return {
+            return ({
                 'error': error
-            }
+            })
 
     @http.route("/up_property/<int:property_id>", methods=["PUT"], type="json", auth="none", csrf=False)
     def update_property(self, property_id):
@@ -90,7 +88,7 @@ class ApiPoint(http.Controller):
             property_domain = []
             print(property_domain)
             if params.get('state'):
-                property_domain += [('state', '=', params.get('state')[0])] #the first item in state
+                property_domain += [('state', '=', params.get('state')[0])]  #the first item in state
             property_ids = request.env['property'].sudo().search(property_domain)
             if not property_ids:
                 return request.make_json_response({
@@ -101,8 +99,8 @@ class ApiPoint(http.Controller):
                 "bedrooms": property_id.bedrooms,
                 "date_availability": property_id.date_availability,
                 "description": property_id.description
-        } for property_id in property_ids])
+            } for property_id in property_ids])
         except Exception as error:
             return request.make_json_response({
-               'error': error
+                'error': error
             })

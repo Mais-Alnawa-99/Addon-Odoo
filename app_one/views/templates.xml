@@ -1,0 +1,26 @@
+<odoo>
+    <template id="show" name="Show Properties">
+        <t t-call="website.layout">
+            <t t-set="title">Create Property</t>
+            <div class="oe_structure">
+                <div class="container">
+                    <form action="/academy/academy/" method="post">
+                        <div class="form-group">
+                            <label for="name_property">Property Name:</label>
+                            <input type="text" name="name_property" id="name_property" class="form-control" required="1"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone_customer">Phone_customer:</label>
+                            <input type="text" name="phone_customer" id="phone_customer" class="form-control" required="1"/>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Create Property</button>
+                    </form>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
+
+
+

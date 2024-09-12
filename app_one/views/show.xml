@@ -1,0 +1,54 @@
+<odoo>
+    <record id="show_view_tree" model="ir.ui.view">
+        <field name="name">show tree</field>
+        <field name="model">show.properties</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="property_id"/>
+                <field name="name_property"/>
+                <field name="phone_customer"/>
+                <field name="description"/>
+                <field name="date_availability"/>
+
+            </tree>
+        </field>
+    </record>
+    <record id="show_view_form" model="ir.ui.view">
+        <field name="name">show form</field>
+        <field name="model">show.properties</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group string ="show_field_1">
+                            <field name="property_id"/>
+                            <field name="phone_customer"/>
+                            <field name="name_property"/>
+                        </group>
+                        <group string ="show_field_2">
+                            <field name="description"/>
+                            <field name="date_availability"/>
+
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="show_action" model="ir.actions.act_window" >
+         <field name="name" > show hist action</field>
+         <field name="res_model" >show.properties</field>
+
+    </record>
+
+
+
+    <menuitem
+      id="show_menu_view"
+      name="SHOW-Properties"
+      parent="property_menu"
+      action="show_action"
+    />
+
+</odoo>

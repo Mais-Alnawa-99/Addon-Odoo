@@ -47,6 +47,7 @@
       name="History"
       parent="property_menu"
       action="history_action"
+
     />
 
 </odoo>

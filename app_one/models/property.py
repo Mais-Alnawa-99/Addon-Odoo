@@ -16,6 +16,7 @@ class Property(models.Model):
     active = fields.Boolean(default=True)
     description = fields.Text()
     postcode = fields.Char()
+    owner_id=fields.Many2one('owner')
     phone_number = fields.Char()
     date_availability = fields.Date(tracking=1)
     expected_price = fields.Float()
