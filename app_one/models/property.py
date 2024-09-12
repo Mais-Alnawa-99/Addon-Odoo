@@ -47,13 +47,15 @@ class Property(models.Model):
         ('close', 'Close'),
         ('done', 'Done'),
 
-    ], default='draft')
+    ])
 
     line = fields.One2many('property.line', 'prop_id')
     _sql_constraints = [
         ('unique_name', 'unique("name")', 'this name is exit')
     ]
     reason = fields.Char()
+    color=fields.Integer()
+    image_property = fields.Image()
     address_id = fields.Many2one('res.partner', 'Address')
     part_id = fields.Many2one('res.partner', 'Part')
 

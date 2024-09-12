@@ -34,6 +34,7 @@
                         <group string ="field_1">
                             <field name="ref"/>
                             <field name="name"/>
+                            <field name="image_property" class="oe_avatar" widget="image"/>
                             <field name="postcode" readonly="state == 'close'"/>
                             <field name="phone_number"/>
                             <field name="address_id" context="{'show_address':1}" options="{'always_reload':True}"/>
@@ -49,6 +50,7 @@
                             <field name="living_area"/>
                             <field name="garden_orientation"/>
                             <field name="city"/>
+                            <field name="color"/>
 
 
                         </group>
@@ -91,33 +93,69 @@
         </field>
     </record>
     <record id="property_kanban_view" model="ir.ui.view">
-        <field name="name">property kanban</field>
+        <field name="name">property.kanban</field>
         <field name="model">property</field>
         <field name="arch" type="xml">
             <kanban>
                 <field name="name"/>
-                <field name="date_availability"/>
-                <field name="garden"/>
                 <field name="postcode"/>
                 <field name="phone_number"/>
+                <field name="image_property"/>
+                <field name="id"/>
                 <templates>
                     <t t-name="kanban-box">
-                        <div clas="oe_kanban_card">
-                            <span t-ecs="record.name.raw_value"/>
-                            <span t-ecs="record.date_availability.raw_value"/>
-                            <span t-ecs="record.garden.raw_value"/>
-                            <span t-ecs="record.postcode.raw_value"/>
-                            <span t-ecs="record.phone_number.raw_value"/>
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
+                            <div class="o_kanban_image d-none d-md-block"
+                                 t-attf-style="background-image:url('#{kanban_image('property','image_property', record.id.raw_value)}')">
+
+                            </div>
+                            <div class="oe_kanban_details d-flex flex-column">
+                                <strong>
+                                    <span t-esc="record.name.raw_value"/>
+                                </strong>
+                                <ul>
+                                    <li>PostCode: <span t-esc="record.postcode.raw_value"/></li>
+                                    <li>Phone Number: <span t-esc="record.phone_number.raw_value"/></li>
+                                </ul>
+                            </div>
                         </div>
                     </t>
                 </templates>
             </kanban>
         </field>
     </record>
+    <record id="pivot_view" model="ir.ui.view">
+        <field name="name">Pivot View</field>
+        <field name="model">property</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="name"/>
+                <field name="postcode"/>
+                <field name="city"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="graph_view" model="ir.ui.view">
+        <field name="name">Graph View</field>
+        <field name="model">property</field>
+        <field name="arch" type="xml">
+            <graph>
+                <field name="name"/>
+                <field name="postcode"/>
+                <field name="city"/>
+            </graph>
+        </field>
+    </record>
+
     <record id="property_action" model="ir.actions.act_window" >
          <field name="name" >property action</field>
          <field name="res_model" >property</field>
          <field name="context" >{'default_name':'property'}</field>
+         <field name="context" >{'group_by':'state'}</field>
+        <field name="view_mode">kanban,tree,form,graph,pivot</field>
+
+
 
     </record>
     <record id="check_selling_cron" model="ir.cron">
