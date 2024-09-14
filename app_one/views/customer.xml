@@ -6,6 +6,8 @@
             <tree>
                  <field name="name"/>
                  <field name="address"/>
+                 <field name="user_id"/>
+                 <field name="customer_filter"/>
 
             </tree>
         </field>
@@ -20,6 +22,8 @@
                         <group string ="customer_field_1">
                             <field name="name"/>
                             <field name="address"/>
+                            <field name="user_id"/>
+                            <field name="customer_filter"/>
                         </group>
                     </group>
                 </sheet>
@@ -30,6 +34,11 @@
     <record id="customer_action" model="ir.actions.act_window" >
          <field name="name" > customer action</field>
          <field name="res_model" >customer</field>
+         <field name="domain">[('customer_filter', '=', 1)]</field>
+
+
+
+
 
     </record>
 

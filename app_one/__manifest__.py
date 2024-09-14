@@ -7,7 +7,6 @@
                 ],
     'data': [
         'security/ir.model.access.csv',
-        'security/security.xml',
         'views/base.xml',
         'views/customer.xml',
         'views/owner.xml',

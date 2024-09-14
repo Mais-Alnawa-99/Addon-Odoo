@@ -128,6 +128,14 @@ class Property(models.Model):
 
             })
 
+    def post(self):
+        default_postcode = self.env.context.get('default_postcode')
+        if default_postcode:
+         print(f"Default Postcode: {default_postcode}")
+         self.create({'name': 'New Property', 'postcode': default_postcode})
+
+
+
     @api.model
     def create(self, vals):
         res = super(Property, self).create(vals)

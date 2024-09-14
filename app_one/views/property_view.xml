@@ -28,6 +28,7 @@
                         <button name="action_progress" type="object" class="btn-secondary" string="set to progress"/>
                         <button name="action_close" type="object" class="btn-success" string="set to close"/>
                         <button name="show_all_rec" type="object" class="btn-success" string="show rec"/>
+                        <button name="post" type="object" class="btn-success" string="create rec" context="{'default_postcode':'444'}"/>
                         <field name="state" widget="statusbar"/>
                     </header>
                     <group>
@@ -82,6 +83,7 @@
             </form>
         </field>
     </record>
+
     <record id="property_view_search" model="ir.ui.view">
         <field name="name">property  search</field>
         <field name="model">property</field>
@@ -89,6 +91,8 @@
             <search>
                 <field name="name" context="{'active_test':False}"/>
                 <field name="postcode"/>
+                <filter name="is_garden" string="Garden" domain="[('garden','=',True)]"/>
+                <filter name="is_city" string="City" context="{'group_by':'city'}"/>
             </search>
         </field>
     </record>
@@ -151,8 +155,8 @@
     <record id="property_action" model="ir.actions.act_window" >
          <field name="name" >property action</field>
          <field name="res_model" >property</field>
-         <field name="context" >{'default_name':'property'}</field>
-         <field name="context" >{'group_by':'state'}</field>
+        <field name="context" >{'default_name':'property'}</field>
+        <field name="context" >{'group_by':'state'}</field>
         <field name="view_mode">kanban,tree,form,graph,pivot</field>
 
 
