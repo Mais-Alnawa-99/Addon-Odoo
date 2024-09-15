@@ -9,19 +9,26 @@ class Customer(models.Model):
 
     address = fields.Text(groups="app_one.group_owner_access")
     user_id = fields.Many2one('res.users')
+    position = fields.Selection([
+        ('draft', 'Draft'),
+        ('progress', 'Progress'),
+
+    ])
 
     customer_filter = fields.Char(compute='_compute_customer_filter', search='_search_customer_filter')
 
     def _compute_customer_filter(self):
         for rec in self:
-         rec.customer_filter = "record for each customer"
+            rec.customer_filter = "record for each customer"
 
     def _search_customer_filter(self, operator, value):
         current_user = self.env.user
-        current_customer = self.env['customer'].search([('user_id', '=', current_user.id)])
-        if current_customer:
-            domain = [('id', 'in', current_customer.ids)]
+        if current_user.has_group('app_one.group_owner_access'):
+            domain = [(1, '=', 1)]
         else:
-            domain = []
+            current_customer = self.env['customer'].search([('user_id', '=', current_user.id)])
+            if current_customer:
+                domain = [('id', 'in', current_customer.ids)]
+            else:
+                domain = []
         return domain
-
