@@ -7,3 +7,4 @@ from .import history
 from .import show_properties
 from .import owner
 from .import customer
+from .import crm_lead

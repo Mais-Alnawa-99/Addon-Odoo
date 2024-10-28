@@ -39,7 +39,6 @@
                             <field name="postcode" readonly="state == 'close'"/>
                             <field name="phone_number"/>
                             <field name="address_id" context="{'show_address':1}" options="{'always_reload':True}"/>
-                            <field name="part_id" domin="[('phone','=',True)]"/>
                             <field name="expected_price"/>
                              <field name="expected_price_date"/>
                              <field name="active"/>
@@ -153,13 +152,11 @@
     </record>
 
     <record id="property_action" model="ir.actions.act_window" >
-         <field name="name" >property action</field>
-         <field name="res_model" >property</field>
+        <field name="name" >property action</field>
+        <field name="res_model" >property</field>
         <field name="context" >{'default_name':'property'}</field>
         <field name="context" >{'group_by':'state'}</field>
         <field name="view_mode">kanban,tree,form,graph,pivot</field>
-
-
 
     </record>
     <record id="check_selling_cron" model="ir.cron">

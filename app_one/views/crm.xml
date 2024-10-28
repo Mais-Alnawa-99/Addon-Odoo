@@ -1,0 +1,29 @@
+<odoo>
+     <record id="lead_view_form_inherit" model="ir.ui.view">
+         <field name="name">form crm inherit</field>
+         <field name="model">crm.lead</field>
+         <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+         <field name="arch" type="xml">
+             <xpath expr="//field[@name='partner_id']" position="after">
+                 <field name="property_id"/>
+             </xpath>
+             <xpath expr="//field[@name='property_id']" position="after">
+                 <field name="is_customer"/>
+             </xpath>
+         </field>
+     </record>
+
+
+
+     <record id="crm_record_action" model="ir.actions.act_window">
+         <field name="name">Property Crm</field>
+         <field name="res_model">crm.lead</field>
+         <field name="domain">[('is_customer', '=', True)]</field>
+         <field name="view_mode">kanban,tree,form</field>
+     </record>
+
+     <menuitem id="record_crm_menu"
+               name="Property Crm"
+               parent="property_menu"
+               action="crm_record_action"/>
+</odoo>

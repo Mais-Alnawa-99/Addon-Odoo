@@ -3,7 +3,8 @@
     'author': 'mais alnawa',
     'category': '',
     'version': "17.0.0.1.0",
-    'depends': ['base', 'sale_management', 'account', 'mail','website',
+    'depends': ['base', 'sale_management', 'account', 'mail',
+                'website','crm',
                 ],
     'data': [
         'security/ir.model.access.csv',
@@ -14,6 +15,7 @@
         'views/property_view.xml',
         'views/sale.xml',
         'views/history.xml',
+        'views/crm.xml',
         'views/show.xml',
         'views/templates.xml',
         'wizards/wizard.xml',

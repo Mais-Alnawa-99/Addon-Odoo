@@ -57,7 +57,8 @@ class Property(models.Model):
     color=fields.Integer()
     image_property = fields.Image()
     address_id = fields.Many2one('res.partner', 'Address')
-    part_id = fields.Many2one('res.partner', 'Part')
+    part_id = fields.Many2one('res.partner')
+
 
     def action_draft(self):
         for rec in self:

@@ -1,9 +1,5 @@
 
-from odoo import http
-from odoo.http import request
 
-from odoo import http
-from werkzeug.utils import redirect
 
 from odoo import http
 from werkzeug.utils import redirect
@@ -18,6 +14,7 @@ class PageMain(http.Controller):
             new_record = request.env['show.properties'].sudo().create(kw)
             return redirect('/academy/academy/')
         return http.request.render('app_one.show')
+
 
 
 
