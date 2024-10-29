@@ -10,9 +10,9 @@
              <xpath expr="//field[@name='property_id']" position="after">
                  <field name="is_customer"/>
              </xpath>
-            <xpath expr="//header" position="replace">
+           <xpath expr="//header" position="inside">
                 <field name="stage_id" widget="statusbar" options="{'clickable': True}"/>
-            </xpath>
+           </xpath>
 
          </field>
      </record>
