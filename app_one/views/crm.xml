@@ -13,6 +13,12 @@
              <xpath expr="//header" position="inside">
                  <field name="stage_id" widget="statusbar" options="{'clickable': True}"/>
              </xpath>
+
+           <xpath expr="//header" position="inside">
+                <field name="stage_id" widget="statusbar" options="{'clickable': True}"/>
+           </xpath>
+
+
          </field>
      </record>
 
