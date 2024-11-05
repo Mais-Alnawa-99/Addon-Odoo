@@ -25,8 +25,9 @@
     ],
     'assets': {
         'web.assets_frontend': ['app_one\static\src\property.css',
-                               'app_one/static/src/css/style.css',
-                               'app_one/static/src/html/style.html',
+                                'app_one\static\src\css\style.css',
+                                'app_one/static/src/img',
+                                'app_one/static/src/html/style.html',
 
                                ],
         'web.report_assets_common': ['app_one/static/src/font.css'],

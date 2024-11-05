@@ -8,9 +8,9 @@ class ShowProperties(models.Model):
 
     property_id = fields.Many2one('property')
     date_availability = fields.Date()
-    description = fields.Text()
+    price= fields.Float()
+    location = fields.Text()
     phone_customer=fields.Char()
-    name_property=fields.Char()
 
     @api.constrains('phone_customer')
     def number_phone_condition(self):

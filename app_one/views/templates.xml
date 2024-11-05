@@ -1,32 +1,81 @@
 <odoo>
-    <template id="show" name="Show Properties">
+    <template id="show_properties" name="Show Properties">
         <t t-call="website.layout">
-            <t t-set="title">Create Property</t>
-            <div class="oe_structure">
-                <div class="container">
-                    <h2 class="section-title">Property Creation</h2>
-                    <p class="section-description">Fill out the form below to add a new property.</p>
-                    <form action="/academy/academy/" method="post">
-                        <div class="form-group">
-                            <label for="name_property">Property Name:</label>
-                            <input type="text" name="name_property" id="name_property" class="form-control" required="1"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone_customer">Phone Customer:</label>
-                            <input type="text" name="phone_customer" id="phone_customer" class="form-control" required="1"/>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Create Property</button>
-                    </form>
-                </div>
+            <div class="container">
+                <h2 class="section-title">Available Properties</h2>
+                <div class="content-container">
+                    <div class="reservation-form">
+                        <h3>Reserve a Property</h3>
+                        <form action="/academy/academy/" method="post">
+                            <div class="form-group">
+                                <label for="property_id">Property Name:</label>
+                                <input type="text" name="property_id" id="property_id" class="form-control" required="1"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone_customer">Phone Customer:</label>
+                                <input type="text" name="phone_customer" id="phone_customer" class="form-control" required="1"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="date_availability">Reservation:</label>
+                                <input type="text" name="date_availability" id="date_availability" class="form-control" required="1"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="price">Price Property:</label>
+                                <input type="text" name="price" id="price" class="form-control" required="1"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="location">Location Property:</label>
+                                <input type="text" name="location" id="location" class="form-control" required="1"/>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Create Property</button>
+                        </form>
+                    </div>
 
-                <div class="card-container">
-                    <div class="card">
-                        <h3>Sample Property</h3>
-                        <p>Customer Phone: 123-456-7890</p>
-                        <button class="btn-card-action">View</button>
+                    <div class="note-container">
+                        <div class="note">
+                            <h3>Note</h3>
+                            <p>This real estate site allows you to browse available listings and choose the property that best fits your location and budget. Enjoy a unique and easy experience!</p>
+                        </div>
+                        <img src="/app_one/static/src/img/property.1.jpg" alt="Property Note Image" class="note-image"/>
+                    </div>
+                </div>
+                <div class="properties-container">
+                    <div class="property-card">
+                        <img src="/app_one/static/src/img/property5.jpg" alt="Property Image" class="property-image"/>
+                        <h3>Property One</h3>
+                        <p>Location: City Center</p>
+                        <p>Phone: 123-456-7890</p>
+                        <p>Price: $500,000</p>
+                    </div>
+                    <div class="property-card">
+                        <img src="/app_one/static/src/img/property.2.jpg" alt="Property Image" class="property-image"/>
+                        <h3>Property Two</h3>
+                        <p>Location: Downtown</p>
+                        <p>Phone: 123-456-7891</p>
+                        <p>Price: $750,000</p>
+                    </div>
+                    <div class="property-card">
+                        <img src="/app_one/static/src/img/property.3.jpg" alt="Property Image" class="property-image"/>
+                        <h3>Property Three</h3>
+                        <p>Location: Suburbs</p>
+                        <p>Phone: 123-456-7892</p>
+                        <p>Price: $600,000</p>
+                    </div>
+                    <div class="property-card">
+                        <img src="/app_one/static/src/img/property.4.jpg" alt="Property Image" class="property-image"/>
+                        <h3>Property Four</h3>
+                        <p>Location: Uptown</p>
+                        <p>Phone: 123-456-7893</p>
+                        <p>Price: $550,000</p>
                     </div>
                 </div>
             </div>
         </t>
     </template>
 </odoo>
+
+
+
+
+
+

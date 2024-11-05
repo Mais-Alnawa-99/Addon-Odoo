@@ -5,11 +5,9 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="property_id"/>
-                <field name="name_property"/>
                 <field name="phone_customer"/>
-                <field name="description"/>
-                <field name="date_availability"/>
-
+                <field name="location"/>
+                <field name="price"/>
             </tree>
         </field>
     </record>
@@ -20,15 +18,14 @@
             <form>
                 <sheet>
                     <group>
-                        <group string ="show_field_1">
+                        <group string ="show_appointment_1">
                             <field name="property_id"/>
+                            <field name="price"/>
                             <field name="phone_customer"/>
-                            <field name="name_property"/>
                         </group>
-                        <group string ="show_field_2">
-                            <field name="description"/>
+                        <group string ="show_appointment_2">
                             <field name="date_availability"/>
-
+                            <field name="location"/>
                         </group>
                     </group>
                 </sheet>
