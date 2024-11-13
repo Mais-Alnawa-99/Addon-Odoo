@@ -1,0 +1,24 @@
+<odoo>
+    <template id="property_details_template" name="Property Details Page">
+        <t t-call="website.layout">
+            <div class="container mt-5" style="max-width: 800px; overflow-y: hidden; max-height: 80vh;">
+                <h2 t-esc="property.name" style="color: #3498db;"></h2>
+                <div style="display: flex; align-items: flex-start; gap: 20px;">
+                    <div style="flex: 1; max-width: 40%;">
+                        <img t-att-src="'data:image/png;base64,' + property.image.decode('utf-8')"
+                             alt="Property Image"
+                             style="width: 100%; height: auto; object-fit: cover; border-radius: 5px;"/>
+                    </div>
+                    <div style="flex: 2;">
+                        <p t-esc="property.description"/>
+                        <p><strong>Name:</strong> <span t-esc="property.name"/></p>
+                        <p><strong>Type:</strong> <span t-esc="property.property_type"/></p>
+                        <p><strong>Price:</strong> <span t-esc="property.price"/></p>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
+
+

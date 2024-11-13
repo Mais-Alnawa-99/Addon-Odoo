@@ -1,7 +1,5 @@
 import re
-from logging import warning
 
-from odoo.http import request
 import requests
 from odoo import models, fields, api
 
